@@ -11,7 +11,7 @@ exports.getAllUsers = (req, res) => {
   } catch (err) {
     res.status(500).send({
       message: "Um erro ocorreu!",
-      error: err,
+      error: err.message,
     });
   }
 };
@@ -71,7 +71,7 @@ exports.deleteUser = (req, res) => {
   } catch (err) {
     res.status(500).send({
       message: "Não foi possível deletar o usuário",
-      error: err,
+      error: err.message,
     });
   }
 };
