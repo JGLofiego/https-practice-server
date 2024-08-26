@@ -14,6 +14,8 @@ app.use("/", controller);
 
 app.use("/:id", controller);
 
+app.use("/update:id", controller);
+
 app.use("/create", controller);
 
 app.use("/del:id", controller);

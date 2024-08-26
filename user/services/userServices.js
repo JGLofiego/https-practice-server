@@ -75,3 +75,30 @@ exports.deleteUser = (req, res) => {
     });
   }
 };
+
+exports.updateUser = (req, res) => {
+  try {
+    const db = require("../../db.json");
+
+    const newKeys = req.body;
+
+    const id = parseInt(req.params.id);
+
+    const index = db.findIndex((user) => user.id === id);
+
+    if (index !== -1) {
+      Object.assign(db[index], newKeys);
+
+      db[index].id = id;
+
+      fs.writeFileSync("./db.json", JSON.stringify(db, null, "\t"), (err) => {
+        if (err) throw new Error(err);
+      });
+      res.status(200).send({ message: "Alterado com éxito", response: db[index] });
+    } else {
+      res.status(404).send({ message: "Usuário não encontrado!" });
+    }
+  } catch (err) {
+    res.status(500).send({ message: "Não foi possível atualizar o usuário!", error: err.message });
+  }
+};
