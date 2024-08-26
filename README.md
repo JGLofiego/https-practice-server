@@ -8,4 +8,4 @@ http://localhost:3000/         - Stantard GET of db.json
 http://localhost:3000/create   - Post of data, data must be on requisition.body
 
 ## DELETE
-http://localhost:3000/del/<id> - Delete data of specified id
+http://localhost:3000/del/:id  - Delete data of specified id
